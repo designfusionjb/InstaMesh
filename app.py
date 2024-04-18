@@ -19,7 +19,7 @@ from src.utils.camera_util import (
     get_zero123plus_input_cameras,
     get_circular_camera_poses,
 )
-from src.utils.mesh_util import save_obj
+from src.utils.mesh_util import save_obj, save_glb
 from src.utils.infer_util import remove_background, resize_foreground, images_to_video
 
 import tempfile
@@ -190,6 +190,7 @@ def make3d(images):
     mesh_basename = os.path.basename(mesh_fpath).split('.')[0]
     mesh_dirname = os.path.dirname(mesh_fpath)
     video_fpath = os.path.join(mesh_dirname, f"{mesh_basename}.mp4")
+    mesh_glb_fpath = os.path.join(mesh_dirname, f"{mesh_basename}.glb")
 
     with torch.no_grad():
         # get triplane
@@ -237,10 +238,11 @@ def make3d(images):
         faces = faces[:, [2, 1, 0]]
 
         save_obj(vertices, faces, vertex_colors, mesh_fpath)
+        save_glb(vertices, faces, vertex_colors, mesh_glb_fpath)
         
         print(f"Mesh saved to {mesh_fpath}")
 
-    return mesh_fpath
+    return mesh_fpath, mesh_glb_fpath
 
 
 _HEADER_ = '''
@@ -336,10 +338,18 @@ with gr.Blocks() as demo:
                 #     )
 
             with gr.Row():
-                output_model_obj = gr.Model3D(
-                    label="Output Model (OBJ Format)",
-                    interactive=False,
-                )
+                with gr.Tab("OBJ"):
+                    output_model_obj = gr.Model3D(
+                        label="Output Model (OBJ Format)",
+                        width=768,
+                        interactive=False,
+                    )
+                with gr.Tab("GLB"):
+                    output_model_glb = gr.Model3D(
+                        label="Output Model (GLB Format)",
+                        width=768,
+                        interactive=False,
+                    )
 
             with gr.Row():
                 gr.Markdown('''Try a different <b>seed value</b> if the result is unsatisfying (Default: 42).''')
@@ -361,7 +371,7 @@ with gr.Blocks() as demo:
     ).success(
         fn=make3d,
         inputs=[mv_images],
-        outputs=[output_model_obj]
+        outputs=[output_model_obj, output_model_glb]
     )
 
 demo.launch()
