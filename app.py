@@ -341,13 +341,11 @@ with gr.Blocks() as demo:
                 with gr.Tab("OBJ"):
                     output_model_obj = gr.Model3D(
                         label="Output Model (OBJ Format)",
-                        width=768,
                         interactive=False,
                     )
                 with gr.Tab("GLB"):
                     output_model_glb = gr.Model3D(
                         label="Output Model (GLB Format)",
-                        width=768,
                         interactive=False,
                     )
 
