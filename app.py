@@ -244,7 +244,7 @@ def make3d(images):
 
 
 _HEADER_ = '''
-<h2><b>Official 🤗 Gradio Demo</b></h2><h2><a href='https://github.com/TencentARC/InstantMesh' target='_blank'><b>InstantMesh: Efficient 3D Mesh Generation from a Single Image with Sparse-view Large Reconstruction Models</b></a></h2>
+<h2><b>Official 🤗 Gradio Demo</b></h2><h2><a href='https://github.com/TencentARC/InstantMesh' target='_blank'><b>InstantMesh: Efficient 3D Mesh Generation from a Single Image with Sparse-view Large Reconstruction Models</b></a></h2> <p>InstantMesh is a Powerful AI which can convert single <b>2D image into 3d model</b><p>
 '''
 
 _LINKS_ = '''
@@ -342,7 +342,7 @@ with gr.Blocks() as demo:
                 )
 
             with gr.Row():
-                gr.Markdown('''Try a different <b>seed value</b> if the result is unsatisfying (Default: 42).''')
+                gr.Markdown('''Tips to Generate better model:- <br>1. Try a different <b>seed value</b> if the result is unsatisfying (Default: 42). <br>2. On Increasing the No. of Sample steps, Quality of Model increases But takes longer Generation time.''')
 
     gr.Markdown(_LINKS_)
     gr.Markdown(_CITE_)
