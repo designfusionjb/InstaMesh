@@ -250,8 +250,10 @@ _HEADER_ = '''
 '''
 
 _LINKS_ = '''
+<h3>Important Note: Our demo supports exporting a .obj mesh with vertex colors or a .glb mesh now. If you prefer to export a .obj mesh with a texture map, please refer to our <a href='https://github.com/TencentARC/InstantMesh?tab=readme-ov-file#running-with-command-line' target='_blank'>Github repo</a>.</h3>
 <h3>Code is available at <a href='https://github.com/TencentARC/InstantMesh' target='_blank'>GitHub</a></h3>
 <h3>Report is available at <a href='https://arxiv.org/abs/2404.07191' target='_blank'>ArXiv</a></h3>
+<h3>Feel free to open a discussion if you meet any problem!</h3>
 '''
 
 _CITE_ = r"""
