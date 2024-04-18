@@ -234,11 +234,9 @@ def make3d(images):
 
         vertices, faces, vertex_colors = mesh_out
         vertices = vertices[:, [1, 2, 0]]
-        vertices[:, -1] *= -1
-        faces = faces[:, [2, 1, 0]]
-
-        save_obj(vertices, faces, vertex_colors, mesh_fpath)
+        
         save_glb(vertices, faces, vertex_colors, mesh_glb_fpath)
+        save_obj(vertices, faces, vertex_colors, mesh_fpath)
         
         print(f"Mesh saved to {mesh_fpath}")
 
@@ -350,6 +348,7 @@ with gr.Blocks() as demo:
                         label="Output Model (GLB Format)",
                         interactive=False,
                     )
+                    gr.Markdown("Note: The model shown here has a darker appearance. Download to get correct results.")
 
             with gr.Row():
                 gr.Markdown('''Try a different <b>seed value</b> if the result is unsatisfying (Default: 42).''')

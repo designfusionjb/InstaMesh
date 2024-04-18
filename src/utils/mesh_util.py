@@ -16,6 +16,10 @@ from PIL import Image
 
 
 def save_obj(pointnp_px3, facenp_fx3, colornp_px3, fpath):
+
+    pointnp_px3 = pointnp_px3 @ np.array([[1, 0, 0], [0, 1, 0], [0, 0, -1]])
+    facenp_fx3 = facenp_fx3[:, [2, 1, 0]]
+
     mesh = trimesh.Trimesh(
         vertices=pointnp_px3, 
         faces=facenp_fx3, 
@@ -25,6 +29,9 @@ def save_obj(pointnp_px3, facenp_fx3, colornp_px3, fpath):
 
 
 def save_glb(pointnp_px3, facenp_fx3, colornp_px3, fpath):
+
+    pointnp_px3 = pointnp_px3 @ np.array([[-1, 0, 0], [0, 1, 0], [0, 0, -1]])
+
     mesh = trimesh.Trimesh(
         vertices=pointnp_px3, 
         faces=facenp_fx3, 
