@@ -142,7 +142,7 @@ def preprocess(input_image, do_remove_background):
 
     if do_remove_background:
         input_image = remove_background(input_image, rembg_session)
-        input_image = resize_foreground(input_image, 0.85)
+        input_image = resize_foreground(input_image, 1)
 
     return input_image
 
