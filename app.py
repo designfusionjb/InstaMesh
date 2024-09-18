@@ -101,7 +101,7 @@ IS_FLEXICUBES = True if config_name.startswith('instant-mesh') else False
 device = torch.device('cuda')
 
 # load diffusion model
-print('Loading diffusion model ...')
+print('Loading diffusion model .')
 pipeline = DiffusionPipeline.from_pretrained(
     "sudo-ai/zero123plus-v1.2", 
     custom_pipeline="zero123plus",
