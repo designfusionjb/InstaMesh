@@ -366,7 +366,7 @@ with gr.Blocks() as demo:
                     gr.Markdown("Note: The model shown here has a darker appearance. Download to get correct results.")
 
             with gr.Row():
-                gr.Markdown('''Try a different <b>seed value</b> if the result is unsatisfying (Default: 42).''')
+                gr.Markdown('''Try a di the result is unsatisfying (Default: 42).''')
 
     gr.Markdown(_CITE_)
 
