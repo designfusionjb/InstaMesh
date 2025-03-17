@@ -21,3 +21,4 @@ plyfile
 xformers==0.0.22.post7
 git+https://github.com/NVlabs/nvdiffrast/
 huggingface-hub
+onnxruntime
